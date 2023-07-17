@@ -19,6 +19,7 @@ btn1.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn1.textContent = "Добавить";
     }
     else
     {
@@ -34,12 +35,14 @@ btn2.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn2.textContent = "Добавить";
     }
     else
     {
         tg.MainButton.setText("Выбран товар №2");
         item = "2";
         tg.MainButton.show();
+        btn2.textContent = "Отменить";
     }
 });
 
@@ -48,12 +51,14 @@ btn3.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn3.textContent = "Добавить";
     }
     else
     {
         tg.MainButton.setText("Выбран товар №3");
         item = "3";
         tg.MainButton.show();
+        btn3.textContent = "Отменить";
     }
 });
 
@@ -62,12 +67,14 @@ btn4.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn4.textContent = "Добавить";
     }
     else
     {
         tg.MainButton.setText("Выбран товар №4");
         item = "4";
         tg.MainButton.show();
+        btn4.textContent = "Отменить";
     }
 });
 
@@ -76,12 +83,14 @@ btn5.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn5.textContent = "Добавить";
     }
     else
     {
         tg.MainButton.setText("Выбран товар №5");
         item = "5";
         tg.MainButton.show();
+        btn5.textContent = "Отменить";
     }
 });
 
@@ -90,12 +99,14 @@ btn6.addEventListener("click", function()
     if (tg.MainButton.isVisible)
     {
         tg.MainButton.hide();
+        btn6.textContent = "Добавить";
     }
     else
     {
         tg.MainButton.setText("Выбран товар №6");
         item = "6";
         tg.MainButton.show();
+        btn6.textContent = "Отменить";
     }
 });
 
