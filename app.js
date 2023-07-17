@@ -22,6 +22,7 @@ btn1.addEventListener("click", function()
     }
     else
     {
+        btn1.setText("Отменить")
         tg.MainButton.setText("Выбран товар №1");
         item = "1";
         tg.MainButton.show();
