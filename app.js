@@ -25,21 +25,22 @@ let btn6 = document.getElementById("btn6")
 
 for (let i = 0; i < 6; i++)
 {
-    btn[i].addEventListener("click", function()
-    {
-        if (tg.MainButton.isVisible)
+    btn[i].addEventListener("click", (function(index) {
+        return function()
         {
-            tg.MainButton.hide();
-            btn[i].textContent = "Добавить";
-        }
-        else
-        {
-            tg.MainButton.setText("Выбран товар №" + (i + 1));
-            item = i+1;
-            tg.MainButton.show();
-            btn[i].textContent = "Отменить";
-        }
-    });
+            if (tg.MainButton.isVisible) {
+                tg.MainButton.hide();
+                btn[index].textContent = "Добавить";
+            }
+            else
+            {
+                tg.MainButton.setText("Выбран товар №" + (index + 1));
+                item = index + 1;
+                tg.MainButton.show();
+                btn[index].textContent = "Отменить";
+            }
+        };
+    })(i));
 }
 
 /*
