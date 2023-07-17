@@ -23,23 +23,23 @@ let btn5 = document.getElementById("btn5")
 let btn6 = document.getElementById("btn6")
 */
 
-for (var i = 0; i < 6; i++)
+for (let i = 0; i < 6; i++)
 {
     btn[i].addEventListener("click", function()
-{
-    if (tg.MainButton.isVisible)
     {
-        tg.MainButton.hide();
-        btn[i].textContent = "Добавить";
-    }
-    else
-    {
-        tg.MainButton.setText("Выбран товар №" + i + 1);
-        item = i+1;
-        tg.MainButton.show();
-        btn[i].textContent = "Отменить";
-    }
-});
+        if (tg.MainButton.isVisible)
+        {
+            tg.MainButton.hide();
+            btn[i].textContent = "Добавить";
+        }
+        else
+        {
+            tg.MainButton.setText("Выбран товар №" + (i + 1));
+            item = i+1;
+            tg.MainButton.show();
+            btn[i].textContent = "Отменить";
+        }
+    });
 }
 
 /*
@@ -143,12 +143,12 @@ Telegram.WebApp.onEvent("mainButtonClicked", function()
 {
     tg.sendData(item);
 });
-*/
+
 let usercard = document.getElementById("usercard");
 
 let p = document.createElement("p");
 
 p.innerText = '${tg.initDataUnsafe.user.first_name}\n${tg.initDataUnsafe.user.last_name}'
-/*
+
 usercard.appendChild(p);
 */
