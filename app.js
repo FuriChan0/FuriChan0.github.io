@@ -7,13 +7,42 @@ tg.MainButton.color = "#2cab37"
 
 let item = "";
 
+const btn = [];
+
+for (var i = 1; i <= 6; i++)
+{
+    btn[i] = document.getElementById('btn' + i);
+}
+
+/*
 let btn1 = document.getElementById("btn1")
 let btn2 = document.getElementById("btn2")
 let btn3 = document.getElementById("btn3")
 let btn4 = document.getElementById("btn4")
 let btn5 = document.getElementById("btn5")
 let btn6 = document.getElementById("btn6")
+*/
 
+for (var i = 0; i < 6; i++)
+{
+    btn[i].addEventListener("click", function()
+{
+    if (tg.MainButton.isVisible)
+    {
+        tg.MainButton.hide();
+        btn[i].textContent = "Добавить";
+    }
+    else
+    {
+        tg.MainButton.setText("Выбран товар №" + i + 1);
+        item = i+1;
+        tg.MainButton.show();
+        btn[i].textContent = "Отменить";
+    }
+});
+}
+
+/*
 btn1.addEventListener("click", function()
 {
     if (tg.MainButton.isVisible)
@@ -114,11 +143,12 @@ Telegram.WebApp.onEvent("mainButtonClicked", function()
 {
     tg.sendData(item);
 });
-
+*/
 let usercard = document.getElementById("usercard");
 
 let p = document.createElement("p");
 
 p.innerText = '${tg.initDataUnsafe.user.first_name}\n${tg.initDataUnsafe.user.last_name}'
-
+/*
 usercard.appendChild(p);
+*/
