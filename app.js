@@ -26,7 +26,7 @@ function createClickListener(index)
         else
         {
             tg.MainButton.setText("Выбран товар №" + index);
-            item = index;
+            item = index.toString();
             tg.MainButton.show();
             btn[index].textContent = "Отменить";
         }
@@ -35,5 +35,5 @@ function createClickListener(index)
 
 Telegram.WebApp.onEvent("mainButtonClicked", function()
 {
-    tg.sendData(item);
+    tg.sendData("1");
 });
