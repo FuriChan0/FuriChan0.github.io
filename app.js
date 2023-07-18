@@ -24,7 +24,7 @@ function createClickListener(index)
             tg.MainButton.hide();
             for (let j = 1; j <= numProducts; j++)
             {
-                btn[j].textContent = "Добавить";
+                btn[j].textContent = "что";
             }
         }
         else
