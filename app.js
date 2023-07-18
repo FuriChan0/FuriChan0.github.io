@@ -6,10 +6,11 @@ tg.MainButton.textColor = "#FFFFFF"
 tg.MainButton.color = "#2cab37"
 
 let item = "";
+let numProducts = 6;
 
 const btn = [];
 
-for (let i = 1; i <= 6; i++) {
+for (let i = 1; i <= numProducts; i++) {
     btn[i] = document.getElementById('btn' + i);
     btn[i].addEventListener("click", createClickListener(i));
 }
@@ -26,7 +27,7 @@ function createClickListener(index)
         else
         {
             tg.MainButton.setText("Выбран товар №" + index);
-            item = index.toString();
+            item = String(index);
             tg.MainButton.show();
             btn[index].textContent = "Отменить";
         }
@@ -35,5 +36,5 @@ function createClickListener(index)
 
 Telegram.WebApp.onEvent("mainButtonClicked", function()
 {
-    tg.sendData("1");
+    tg.sendData(item);
 });
