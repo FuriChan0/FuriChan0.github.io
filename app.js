@@ -30,6 +30,13 @@ function createClickListener(index)
             item = String(index);
             tg.MainButton.show();
             btn[index].textContent = "Отменить";
+            for (let i = 1; i <= numProducts; i++)
+            {
+                if (i !== index)
+                {
+                    btn[index].textContent = "Добавить";
+                }
+            }
         }
     };
 }
