@@ -22,13 +22,9 @@ function createClickListener(index)
         if (tg.MainButton.isVisible)
         {
             tg.MainButton.hide();
-            btn[index].textContent = "Добавить";
             for (let j = 1; j <= numProducts; j++)
             {
-                if (j !== index)
-                {
-                    btn[index].textContent = "Добавить";
-                }
+                btn[index].textContent = "Добавить";
             }
         }
         else
