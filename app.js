@@ -14,7 +14,8 @@ for (let i = 1; i <= 6; i++) {
     btn[i].addEventListener("click", createClickListener(i));
 }
 
-function createClickListener(index) {
+function createClickListener(index)
+{
     return function()
     {
         if (tg.MainButton.isVisible)
@@ -31,3 +32,8 @@ function createClickListener(index) {
         }
     };
 }
+
+Telegram.WebApp.onEvent("mainButtonClicked", function()
+{
+    tg.sendData(item);
+});
