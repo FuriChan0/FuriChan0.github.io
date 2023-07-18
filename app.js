@@ -9,22 +9,25 @@ let item = "";
 
 const btn = [];
 
-for (let i = 1; i <= 6; i++)
-{
+for (let i = 1; i <= 6; i++) {
     btn[i] = document.getElementById('btn' + i);
-    btn[i].addEventListener("click", function()
+    btn[i].addEventListener("click", createClickListener(i));
+}
+
+function createClickListener(index) {
+    return function()
     {
         if (tg.MainButton.isVisible)
         {
             tg.MainButton.hide();
-            btn[i].textContent = "Добавить";
+            btn[index].textContent = "Добавить";
         }
         else
         {
-            tg.MainButton.setText("Выбран товар №" + i);
-            item = i.toString();
+            tg.MainButton.setText("Выбран товар №" + index);
+            item = index.toString();
             tg.MainButton.show();
-            btn[i].textContent = "Отменить";
+            btn[index].textContent = "Отменить";
         }
-    });
+    };
 }
