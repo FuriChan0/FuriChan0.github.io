@@ -23,13 +23,6 @@ function createClickListener(index)
         {
             tg.MainButton.hide();
             btn[index].textContent = "Добавить";
-        }
-        else
-        {
-            tg.MainButton.setText("Выбран товар №" + index);
-            item = String(index);
-            tg.MainButton.show();
-            btn[index].textContent = "Отменить";
             for (let j = 1; j <= numProducts; j++)
             {
                 if (j !== index)
@@ -37,6 +30,13 @@ function createClickListener(index)
                     btn[index].textContent = "Добавить";
                 }
             }
+        }
+        else
+        {
+            tg.MainButton.setText("Выбран товар №" + index);
+            item = String(index);
+            tg.MainButton.show();
+            btn[index].textContent = "Отменить";
         }
     };
 }
