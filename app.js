@@ -33,7 +33,6 @@ function createClickListener(index)
             item = String(index);
             tg.MainButton.show();
             btn[index].textContent = "Отменить";
-            btn[index].textColor = "#2cab37"
         }
     };
 }
