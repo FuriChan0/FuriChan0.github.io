@@ -26,7 +26,7 @@ function createClickListener(index)
         else
         {
             tg.MainButton.setText("Выбран товар №" + index);
-            item = index.toString();
+            item = index;
             tg.MainButton.show();
             btn[index].textContent = "Отменить";
         }
