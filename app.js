@@ -92,6 +92,14 @@ function clearUserCard()
     }
 }
 
+function increaseQuantity()
+{
+    const quantityText = document.querySelector('.quantity-text');
+    let quantity = parseInt(quantityText.textContent.split(':')[1].trim(), 10);
+    quantity++;
+    quantityText.textContent = 'Выбрано: ' + quantity;
+}
+
 function decreaseQuantity()
 {
     const quantityText = document.querySelector('.quantity-text');
@@ -102,15 +110,12 @@ function decreaseQuantity()
     }
 }
 
-function increaseQuantity()
-{
-    const quantityText = document.querySelector('.quantity-text');
-    let quantity = parseInt(quantityText.textContent.split(':')[1].trim(), 10);
-    quantity++;
-    quantityText.textContent = 'Выбрано: ' + quantity;
+let data = {
+    item: item,
+    quantity: quantity
 }
 
 Telegram.WebApp.onEvent('mainButtonClicked', function()
 {
-    tg.sendData(item);
+    tg.sendData(data);
 });
