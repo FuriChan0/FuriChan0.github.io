@@ -110,11 +110,6 @@ function decreaseQuantity()
     }
 }
 
-let data = {
-    item: item,
-    quantity: quantity
-}
-
 Telegram.WebApp.onEvent('mainButtonClicked', function()
 {
     tg.sendData(item);
