@@ -117,5 +117,5 @@ let data = {
 
 Telegram.WebApp.onEvent('mainButtonClicked', function()
 {
-    tg.sendData(JSON.stringify(data));
+    tg.sendData(item);
 });
