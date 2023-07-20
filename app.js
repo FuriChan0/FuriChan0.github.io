@@ -73,20 +73,20 @@ function showUserCard(index) {
     plusButton.className = 'quantity-btn';
     plusButton.addEventListener('click', increaseQuantity);
 
-    quantityContainer.innerHTML = ''; // Очищаем содержимое блока
+    quantityContainer.innerHTML = '';
 
     quantityContainer.appendChild(minusButton);
     quantityContainer.appendChild(quantityText);
     quantityContainer.appendChild(plusButton);
 
     const itemContainer = document.getElementById('btn' + index).parentNode;
-    itemContainer.style.position = 'relative'; // Добавлено
+    itemContainer.style.position = 'relative';
     itemContainer.appendChild(quantityContainer);
 }
 
 function clearUserCard()
 {
-    if (quantityContainer !== null) { // Добавлено
+    if (quantityContainer !== null) {
         quantityContainer.parentNode.removeChild(quantityContainer);
         quantityContainer = null;
     }
@@ -112,5 +112,11 @@ function decreaseQuantity()
 
 Telegram.WebApp.onEvent('mainButtonClicked', function()
 {
-    tg.sendData(item);
+    const quantityText = document.querySelector('.quantity-text');
+    let quantity = parseInt(quantityText.textContent.split(':')[1].trim(), 10);
+    let data = {
+        item: item,
+        quantity: quantity
+    }
+    tg.sendData(data);
 });
