@@ -114,9 +114,5 @@ Telegram.WebApp.onEvent('mainButtonClicked', function()
 {
     const quantityText = document.querySelector('.quantity-text');
     let quantity = parseInt(quantityText.textContent.split(':')[1].trim(), 10);
-    let data = {
-        item: item,
-        quantity: quantity
-    }
-    tg.sendData(item);
+    tg.sendData(item + "," + str(quantity));
 });
