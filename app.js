@@ -10,7 +10,8 @@ const selectedItems = {};
 
 const btn = [];
 
-for (let i = 1; i <= numProducts; i++) {
+for (let i = 1; i <= numProducts; i++)
+{
   const button = document.createElement('button');
   button.className = 'btn';
   button.id = 'btn' + i;
@@ -31,7 +32,8 @@ for (let i = 1; i <= numProducts; i++) {
   btn[i].addEventListener('click', createClickListener(i));
 }
 
-function createClickListener(index) {
+function createClickListener(index)
+{
   return function() {
     if (selectedItems[index]) {
       delete selectedItems[index];
@@ -45,7 +47,8 @@ function createClickListener(index) {
   };
 }
 
-function showQuantityContainer(index) {
+function showQuantityContainer(index)
+{
   const itemContainer = document.getElementById('btn' + index).parentNode;
   const quantityContainer = document.createElement('div');
   quantityContainer.className = 'quantity';
@@ -70,44 +73,56 @@ function showQuantityContainer(index) {
   quantityContainer.appendChild(plusButton);
   itemContainer.appendChild(quantityContainer);
 
+  tg.MainButton.setText('Продолжить оформление заказа');
   tg.MainButton.show(); // Показываем кнопку mainButton при выборе товара
 }
 
-function removeQuantityContainer(index) {
+function removeQuantityContainer(index)
+{
   const itemContainer = document.getElementById('btn' + index).parentNode;
   const quantityContainer = itemContainer.querySelector('.quantity');
-  if (quantityContainer) {
+  if (quantityContainer)
+  {
     itemContainer.removeChild(quantityContainer);
   }
 }
 
-function increaseQuantity(index) {
+function increaseQuantity(index)
+{
   selectedItems[index]++;
   updateQuantityText(index);
 }
 
-function decreaseQuantity(index) {
-  if (selectedItems[index] > 1) {
+function decreaseQuantity(index)
+{
+  if (selectedItems[index] > 1)
+  {
     selectedItems[index]--;
     updateQuantityText(index);
   }
 }
 
-function updateQuantityText(index) {
+function updateQuantityText(index)
+{
   const quantityText = document.getElementById('quantity-text-' + index);
   quantityText.textContent = 'Выбрано: ' + selectedItems[index];
 }
 
-Telegram.WebApp.onEvent('mainButtonClicked', function() {
+Telegram.WebApp.onEvent('mainButtonClicked', function()
+{
   let selectedItemsString = '';
-  for (const index in selectedItems) {
+  for (const index in selectedItems)
+  {
     selectedItemsString += index + ' ' + selectedItems[index] + ', ';
   }
   selectedItemsString = selectedItemsString.slice(0, -2); // Удаляем лишнюю запятую и пробел в конце строки
 
-  if (selectedItemsString === '') {
+  if (selectedItemsString === '')
+  {
     tg.MainButton.hide(); // Если нет выбранных товаров, скрываем кнопку mainButton
   }
+
+  alert(selectedItemsString)
 
   tg.sendData(selectedItemsString);
 });
