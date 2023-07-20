@@ -122,7 +122,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function()
     tg.MainButton.hide(); // Если нет выбранных товаров, скрываем кнопку mainButton
   }
 
-  alert(selectedItemsString)
+  //alert(selectedItemsString)
 
   tg.sendData(selectedItemsString);
 });
