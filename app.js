@@ -118,5 +118,5 @@ Telegram.WebApp.onEvent('mainButtonClicked', function()
         item: item,
         quantity: quantity
     }
-    tg.sendData(data);
+    tg.sendData(item);
 });
