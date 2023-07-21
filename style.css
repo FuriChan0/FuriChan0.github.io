@@ -33,18 +33,34 @@ body {
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
+    width: 120px;
 
-    transition: background .2s linear;
+    transition: background .2s linear, width .2s linear;
 }
 
 .btn:hover {
     background: rgb(114, 69, 100);
 }
 
+.btn.expanded {
+    background: rgb(171, 44, 50);
+    width: 165px; /* Задайте нужную ширину для расширенной кнопки */
+}
+
 .quantity {
     top: -60px;
     transform: translateY(-200%);
     text-align: center;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.quantity.show {
+    opacity: 1;
+}
+
+.quantity.hide {
+    opacity: 0;
 }
 
 .quantity-text {

@@ -34,13 +34,18 @@ for (let i = 1; i <= numProducts; i++)
 
 function createClickListener(index)
 {
-  return function() {
-    if (selectedItems[index]) {
+  return function()
+  {
+    if (selectedItems[index])
+    {
       delete selectedItems[index];
       btn[index].textContent = 'Добавить'; // Меняем текст кнопки на "Добавить"
       removeQuantityContainer(index);
-    } else {
+    }
+    else
+    {
       btn[index].textContent = 'Отменить'; // Меняем текст кнопки на "Отменить"
+      btn[index].classList.add('expanded');
       selectedItems[index] = 1;
       showQuantityContainer(index);
     }
@@ -73,6 +78,10 @@ function showQuantityContainer(index)
   quantityContainer.appendChild(plusButton);
   itemContainer.appendChild(quantityContainer);
 
+  requestAnimationFrame(() => {
+    quantityContainer.classList.add('show');
+  });
+
   tg.MainButton.setText('Продолжить оформление заказа');
   tg.MainButton.show(); // Показываем кнопку mainButton при выборе товара
 }
@@ -83,8 +92,12 @@ function removeQuantityContainer(index)
   const quantityContainer = itemContainer.querySelector('.quantity');
   if (quantityContainer)
   {
-    itemContainer.removeChild(quantityContainer);
+    quantityContainer.classList.add('hide');
+    setTimeout(() => {
+      itemContainer.removeChild(quantityContainer);
+    }, 200);
   }
+  btn[index].classList.remove('expanded')
 }
 
 function increaseQuantity(index)
