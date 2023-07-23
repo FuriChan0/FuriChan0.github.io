@@ -33,9 +33,9 @@ body {
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
-    width: 120px;
-
-    transition: background .2s linear, width .2s linear;
+    /* width: 120px; */
+    
+    transition: background .2s linear, width .2s linear, opancity .2s linear;
 }
 
 .btn:hover {
@@ -43,16 +43,21 @@ body {
 }
 
 .btn.expanded {
-    background: rgb(171, 44, 50);
-    width: 165px; /* Задайте нужную ширину для расширенной кнопки */
+    /* background: rgb(171, 44, 50); */
+    opacity: 0;
+    /* width: 50px; */
 }
 
 .quantity {
     top: -60px;
-    transform: translateY(-200%);
+    transform: translateY(-100%);
     text-align: center;
     opacity: 0;
     transition: opacity .2s ease;
+}
+
+.quantity > *:first-child {
+    margin-right: 15px;
 }
 
 .quantity.show {
@@ -66,11 +71,18 @@ body {
 .quantity-text {
     padding: 5px;
     background: rgb(255, 112, 131);
-    border-radius: 3px;
+    border-radius: 100px;
+    width: 15px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 1.2em;
+    position: absolute;
+    transform: translateY(-600%);
+    top: 10px;
+    right: 10px;
 }
+
 
 .quantity-btn {
     display: inline-block;

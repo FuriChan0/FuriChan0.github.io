@@ -64,7 +64,7 @@ function showQuantityContainer(index)
   minusButton.addEventListener('click', () => decreaseQuantity(index));
 
   const quantityText = document.createElement('span');
-  quantityText.textContent = 'Выбрано: ' + selectedItems[index];
+  quantityText.textContent = /*'Выбрано: ' +*/ selectedItems[index];
   quantityText.className = 'quantity-text';
   quantityText.id = 'quantity-text-' + index;
 
@@ -84,6 +84,11 @@ function showQuantityContainer(index)
 
   tg.MainButton.setText('Продолжить оформление заказа');
   tg.MainButton.show(); // Показываем кнопку mainButton при выборе товара
+}
+
+function removeAddContainer(index)
+{
+  
 }
 
 function removeQuantityContainer(index)
@@ -113,12 +118,19 @@ function decreaseQuantity(index)
     selectedItems[index]--;
     updateQuantityText(index);
   }
+  else
+  {
+    delete selectedItems[index];
+    btn[index].textContent = 'Добавить'; // Меняем текст кнопки на "Добавить"
+    removeQuantityContainer(index);
+    tg.MainButton.hide();
+  }
 }
 
 function updateQuantityText(index)
 {
   const quantityText = document.getElementById('quantity-text-' + index);
-  quantityText.textContent = 'Выбрано: ' + selectedItems[index];
+  quantityText.textContent = /*'Выбрано: ' +*/ selectedItems[index];
 }
 
 Telegram.WebApp.onEvent('mainButtonClicked', function()
@@ -135,7 +147,7 @@ Telegram.WebApp.onEvent('mainButtonClicked', function()
     tg.MainButton.hide(); // Если нет выбранных товаров, скрываем кнопку mainButton
   }
 
-  //alert(selectedItemsString)
+  // alert(selectedItemsString)
 
   tg.sendData(selectedItemsString);
 });
