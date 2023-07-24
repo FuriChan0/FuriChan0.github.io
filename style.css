@@ -8,6 +8,7 @@ body {
 
 .container {
     max-width: 390px;
+    background: rgb(28, 39, 49);
 }
 
 .inner {
@@ -17,7 +18,7 @@ body {
 }
 
 .img {
-    width: 150px;
+    width: 130px;
 }
 
 .item {
@@ -28,19 +29,20 @@ body {
     display: inline-block;
     padding: 10px 20px;
     border: none;
-    background: rgb(255, 112, 131);
+    background: rgb(248, 169, 23);
     border-radius: 10px;
     color: #fff;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 800;
     opacity: 1;
+    font-family: sans-serif;
     /* width: 120px; */
     
     transition: background .2s linear, opacity .15s linear;
 }
 
 .btn:hover {
-    background: rgb(114, 69, 100);
+    background: rgb(237, 150, 11);
 }
 
 .btn.expanded {
@@ -58,6 +60,7 @@ body {
 }
 
 .quantity > *:first-child {
+    background: rgb(230, 77, 68);
     margin-right: 10px;
 }
 
@@ -71,7 +74,7 @@ body {
 
 .quantity-text {
     padding: 5px;
-    background: rgb(255, 112, 131);
+    background: rgb(237, 150, 11);
     border-radius: 100px;
     width: 15px;
     color: #fff;
@@ -79,27 +82,51 @@ body {
     font-weight: 700;
     font-size: 1.2em;
     position: absolute;
+    font-family: sans-serif;
     transform: translateY(-600%);
     top: 10px;
     right: 10px;
 }
 
+.item-info {
+    margin-bottom: 5px;
+}
+
+.item-name {
+    font-family: sans-serif;
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.2em;
+}
+
+.item-price {
+    font-family: sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2em;
+}
 
 .quantity-btn {
     display: inline-block;
     padding: 10px 20px;
     border: none;
-    background: rgb(255, 112, 131);
+    background: rgb(248, 169, 23);
     border-radius: 10px;
     color: #fff;
     text-transform: uppercase;
-    font-weight: 700;
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 1.4em;
 
     transition: background .2s linear;
 }
 
 .quantity-btn:hover {
-    background: rgb(114, 69, 100);
+    background: rgb(237, 150, 11);
+}
+
+.quantity-btn:first-child:hover {
+    background: rgb(211, 54, 45);
 }
 
 /*

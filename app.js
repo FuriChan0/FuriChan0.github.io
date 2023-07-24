@@ -5,39 +5,18 @@ tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2cab37";
 
 ////////////////////////////////////////
-/*
-SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk'
-apiKey = 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M'
-*/
-
-const CREDENTIALS = {
-  "type": "service_account",
-  "project_id": "testbd-393323",
-  "private_key_id": "ec46738c3a24425741ba86a36d7f7456c96bdfba",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYDBSJZt1KH4a0\nHRZQqtqCBUP7rxX86qb8+M3426oi2TtqI2UnBjAQAqKqQyee4q41Un6zi4bB2dDA\nbUr5hcGELv3fdJDzOrJr7Bew/k5psCzDzmpK4MI/B8zGz4sEBbUA8Six5xJWC2Sq\nLiFfTKrsNhnOStUdOcKNs9y/1CkgPJr3Ysok8DpjF7Rz+o8zU9jjQ81gBaQ3qxwR\nSTFomO7aGpsxR+hZTVt5q1EFs8j9p+W3X31vBRma8rmJ44zyBD0ECXpFic08n3Fd\nA+4vE9dzgAu3G+AG0IRwQ8Y2/X6ao1Z6mkV2duscJIkQfS1z30igOgEoXrArWQeI\n6gnhhBsRAgMBAAECggEABOcNRkBCeu6ei2gc5rAMglElRZ5SVOlsPacAYYp2i2Y7\njhaHMpdWMDQnGyRSpK0x1ShDPhwcmY8xnf7nlHmftmSsl81Y3AlzyArU+iFjMnca\nz5ytASL64BxIs3rn2tZYUPun9+rYRIHrWF3wnZgrSW3sMFK2uvw3Dn52NBeCkWZ+\npV+ntgJ4oNSsda6lA0KxYjKVcy6pot86XDaUnltZqpk02fYj7FcneNcfe3nLaHDy\nvx9sEU04zgKA/Tuj4dgJIAf0K3h1olo/36sZi7Cf4i3xX1astPBhKt4LUT8tnHdd\nNOabQO2yJ+kew0G09ohhMoUQG/XKGiXqkOk+p0OxoQKBgQD5SKwaNd60S8js4xKO\n/iLZ4lf1peROGriD9a9fG9yIrRCtzyi8jymuLxxcAih36TIUxVnXxCxzjzC+lCCN\noE92j7IJTtdXKGTJqyQyVxwiuh97hqiHUPxhR0+BR92AVu627708dKqK8eBWRU2c\n4BJyvZkIlcitPpoXESzfPC2IuQKBgQDd3iwZtr9cYZ63jZ4ek/ni/g7RqAlEoo0b\nUR4ju4NUtm2MGHnoizWGj5Hp+txivbKxSci8AcjDyUJAx3Zuz5U4vlkSGWO/Lz8Q\nI+Rm7dQlglnl88rBwM1Ry8L6FuPThTV37vdJ3m6wRxS3KVKWBA/mzQmyE9n3kweE\nQBzzeT1JGQKBgCpCXZqb40MhTdCKtgyznGjfbBXip49uDDWiorY23O32mMs+QSOm\nCWTT67TVUNLzH2BSDGb9hKOadKL6LYKU2KO6vG3DhdHqsRtW/e3iwoxIjSm9rDg0\nTHSZSCscabpmAlXU0nm7NWYUlvlJCl07xyTYa2b/LWPhJvIeIUM+ymFRAoGBALa5\nASz0OsmEhEi7U1vvlr+BaQb2Exv5m6jBt8bJ6bFcxP+6MLx52c1GdG908QhJHt+v\n2qgr+AJ2wB/Fph5Ay6595bFoQ6Py70cFqFe0yyFRJ2Sg0X2cofwZiiyZqWxMqupp\nXjPyAsse30qxt5hhJA97Ed8dRkgFSQ18F9vVH8oRAoGBAO3eCrQDQCwf2VuTsOh7\njp08qUsm0TaTTGsbbTPngwY4u/4oH6JGjsgyQOFBaHWJ43VivcvSVymHi5x+XpHm\n/374yqpJpprdXt1lj4m1mJIkOyphFh1Nz9YsCNhyyAbiG1tT/PKXcuqNDtf3bkBB\nPNWyhelN38VvQ3FsjHnemahI\n-----END PRIVATE KEY-----\n",
-  "client_email": "testbdaccount@testbd-393323.iam.gserviceaccount.com",
-  "client_id": "103875777231063674045",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/testbdaccount%40testbd-393323.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-};
-
-// Замени данные ниже на свои
 const SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk';
 const SHEET_NAME = 'Лист1';
-const RANGE = 'A1:B10'; // Укажи диапазон ячеек, откуда нужно получить данные
+const RANGE = 'A:D';
 
-// Функция для инициализации Google Sheets API
+const dataObj = {};
+
 function init()
 {
-  console.log('Инициализация Google Sheets API...');
   gapi.client.init({
-    apiKey: CREDENTIALS,
+    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
     discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
   }).then(function() {
-    console.log('Google Sheets API инициализирован.');
     gapi.client.load('sheets', 'v4');
   }).then(function() {
     getDataFromSheet();
@@ -46,22 +25,29 @@ function init()
   });
 }
 
-// Функция для получения данных из Google Таблицы
-function getDataFromSheet()
-{
+function getDataFromSheet() {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: `${SHEET_NAME}!${RANGE}`,
   }).then(function(response) {
-    console.log('Данные успешно получены из Google Таблицы.');
     const data = response.result.values;
+    console.log(data);
+    const num = data.length;
     if (data && data.length > 0)
     {
-      // Пример использования данных из ячейки A2 и B5:
-      const cellA2 = data[1][0]; // Так как индексация начинается с 0
-      const cellB5 = data[4][1];
-      console.log('Данные из ячейки A2:', cellA2);
-      console.log('Данные из ячейки B5:', cellB5);
+      console.log('Все значения из таблицы:');
+      for (let i = 1; i < num; i++) {
+        const row = data[i];
+        const imageUrl = row[0];
+        const itemName = row[1];
+        const itemPrice = row[2];
+
+        dataObj[`imageUrl${i}`] = imageUrl;
+        dataObj[`itemName${i}`] = itemName;
+        dataObj[`itemPrice${i}`] = itemPrice;
+      }
+
+      createButtonsWithImages(num);
     }
     else
     {
@@ -71,34 +57,50 @@ function getDataFromSheet()
     console.log('Error getting data from Google Sheets:', error);
   });
 }
-////////////////////////////////////////
 
-let numProducts = 6;
-const buttonsContainer = document.getElementById("buttonsContainer");
 const selectedItems = {};
-
 const btn = [];
 
-for (let i = 1; i <= numProducts; i++)
+function createButtonsWithImages(num)
 {
-  const button = document.createElement("button");
-  button.className = "btn";
-  button.id = "btn" + i;
-  button.textContent = "Добавить";
+  const buttonsContainer = document.getElementById("buttonsContainer");
 
-  const img = document.createElement("img");
-  img.src = i + ".png";
-  img.alt = "Burger";
-  img.className = "img";
+  for (let i = 1; i < num; i++)
+  {
+    const button = document.createElement("button");
+    button.className = "btn";
+    button.id = "btn" + i;
+    button.textContent = "Добавить";
 
-  const itemContainer = document.createElement("div");
-  itemContainer.className = "item";
-  itemContainer.appendChild(img);
-  itemContainer.appendChild(button);
-  buttonsContainer.appendChild(itemContainer);
+    const img = document.createElement("img");
+    img.src = dataObj[`imageUrl${i}`]; // Используем ссылку на изображение из объекта dataObj
+    img.alt = "Burger";
+    img.className = "img";
 
-  btn[i] = button; // Сохраняем ссылку на кнопку в массиве btn
-  btn[i].addEventListener("click", createClickListener(i));
+    const nameAndPriceContainer = document.createElement("div");
+    nameAndPriceContainer.className = "item-info";
+
+    const nameElement = document.createElement("span");
+    nameElement.className = "item-name";
+    nameElement.textContent = dataObj[`itemName${i}`];
+
+    const priceElement = document.createElement("span");
+    priceElement.className = "item-price";
+    priceElement.textContent = " · " + dataObj[`itemPrice${i}`] + " руб.";
+
+    nameAndPriceContainer.appendChild(nameElement);
+    nameAndPriceContainer.appendChild(priceElement);
+
+    const itemContainer = document.createElement("div");
+    itemContainer.className = "item";
+    itemContainer.appendChild(img);
+    itemContainer.appendChild(nameAndPriceContainer);
+    itemContainer.appendChild(button);
+    buttonsContainer.appendChild(itemContainer);
+
+    btn[i] = button;
+    btn[i].addEventListener("click", createClickListener(i));
+  }
 }
 
 function createClickListener(index)
@@ -108,12 +110,12 @@ function createClickListener(index)
     if (selectedItems[index])
     {
       delete selectedItems[index];
-      btn[index].textContent = "Добавить"; // Меняем текст кнопки на "Добавить"
+      btn[index].textContent = "Добавить";
       removeQuantityContainer(index);
     }
     else
     {
-      // btn[index].textContent = 'Отменить'; // Меняем текст кнопки на "Отменить"
+      // btn[index].textContent = 'Отменить';
       btn[index].classList.add("expanded");
       selectedItems[index] = 1;
       showQuantityContainer(index);
@@ -152,7 +154,7 @@ function showQuantityContainer(index)
   });
 
   tg.MainButton.setText("Продолжить оформление заказа");
-  tg.MainButton.show(); // Показываем кнопку mainButton при выборе товара
+  tg.MainButton.show();
 }
 
 function removeQuantityContainer(index)
@@ -185,7 +187,7 @@ function decreaseQuantity(index)
   else
   {
     delete selectedItems[index];
-    btn[index].textContent = "Добавить"; // Меняем текст кнопки на "Добавить"
+    btn[index].textContent = "Добавить";
     removeQuantityContainer(index);
   }
 }
@@ -203,11 +205,11 @@ Telegram.WebApp.onEvent("mainButtonClicked", function ()
   {
     selectedItemsString += index + " " + selectedItems[index] + ", ";
   }
-  selectedItemsString = selectedItemsString.slice(0, -2); // Удаляем лишнюю запятую и пробел в конце строки
+  selectedItemsString = selectedItemsString.slice(0, -2);
 
   if (selectedItemsString === "")
   {
-    tg.MainButton.hide(); // Если нет выбранных товаров, скрываем кнопку mainButton
+    tg.MainButton.hide();
   }
 
   // alert(selectedItemsString)
