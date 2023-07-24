@@ -24,7 +24,7 @@ function initClient() {
 function readDataFromSheet(spreadsheetId) {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
-    range: 'Sheet1!A2:A', // Замените на нужный диапазон вашей таблицы
+    range: 'Лист1!A2:A7', // Замените на нужный диапазон вашей таблицы
   }).then(function(response) {
     var values = response.result.values;
     // Обработайте полученные данные (например, выведите их на вашей веб-странице)
