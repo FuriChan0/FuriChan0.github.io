@@ -19,7 +19,7 @@ function init()
 {
   console.log('Инициализация Google Sheets API...');
   gapi.client.init({
-    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
+    apiKey: 'cred.json',
     discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
   }).then(function() {
     console.log('Google Sheets API инициализирован.');
