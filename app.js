@@ -5,52 +5,39 @@ tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2cab37";
 
 ////////////////////////////////////////
+//apiKey: "AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M"
+//clientId: "103875777231063674045"
+//spreadsheetId = "1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk"
+
+gapi.load('client', function() {
+  // Здесь можно вызывать функцию для чтения данных из Google Таблицы
+  initClient();
+});
+
+// Инициализация клиента и загрузка таблицы
 function initClient() {
-  // Загрузка учетных данных сервисного аккаунта
-  gapi.client
-    .init({
-      apiKey: "AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M", // Замените на ваш API ключ
-      clientId: "103875777231063674045", // Замените на фактический client_id из cred.json
-      discoveryDocs: [
-        "https://sheets.googleapis.com/$discovery/rest?version=v4",
-      ],
-    })
-    .then(function () {
-      // После успешной инициализации, делаем запрос к таблице
-      readDataFromSheet();
-    });
+  gapi.client.init({
+    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
+  }).then(function() {
+    // Теперь мы можем использовать Google Sheets API
+    readDataFromSheet('1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk');
+  });
 }
 
 // Функция для чтения данных из таблицы
-function readDataFromSheet() {
-  var spreadsheetId = "1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk"; // Замените на ваш ID таблицы
-  var range = "Лист1!A1:B2"; // Замените на нужный диапазон данных
-
-  gapi.client.sheets.spreadsheets.values
-    .get({
-      spreadsheetId: spreadsheetId,
-      range: range,
-    })
-    .then(
-      function (response) {
-        var values = response.result.values;
-        if (values && values.length > 0) {
-          var data1 = values[0][0];
-          var data2 = values[0][1];
-          // Здесь можно использовать переменные data1 и data2, содержащие данные из таблицы
-          console.log(data1, data2);
-        } else {
-          console.log("Данные не найдены.");
-        }
-      },
-      function (response) {
-        console.log("Ошибка: " + response.result.error.message);
-      }
-    );
+function readDataFromSheet(spreadsheetId) {
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: spreadsheetId,
+    range: 'Sheet1!A1:B10', // Замените на нужный диапазон вашей таблицы
+  }).then(function(response) {
+    var values = response.result.values;
+    // Обработайте полученные данные (например, выведите их на вашей веб-странице)
+    console.log(values);
+  }, function(reason) {
+    console.error('Ошибка: ' + reason.result.error.message);
+  });
 }
 
-// Загрузка API клиента и вызов функции initClient после загрузки
-gapi.load("client", initClient);
 ////////////////////////////////////////
 
 let numProducts = 6;
