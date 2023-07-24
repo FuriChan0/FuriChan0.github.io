@@ -9,6 +9,21 @@ tg.MainButton.color = "#2cab37";
 SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk'
 apiKey = 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M'
 */
+
+const CREDENTIALS = {
+  "type": "service_account",
+  "project_id": "testbd-393323",
+  "private_key_id": "ec46738c3a24425741ba86a36d7f7456c96bdfba",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYDBSJZt1KH4a0\nHRZQqtqCBUP7rxX86qb8+M3426oi2TtqI2UnBjAQAqKqQyee4q41Un6zi4bB2dDA\nbUr5hcGELv3fdJDzOrJr7Bew/k5psCzDzmpK4MI/B8zGz4sEBbUA8Six5xJWC2Sq\nLiFfTKrsNhnOStUdOcKNs9y/1CkgPJr3Ysok8DpjF7Rz+o8zU9jjQ81gBaQ3qxwR\nSTFomO7aGpsxR+hZTVt5q1EFs8j9p+W3X31vBRma8rmJ44zyBD0ECXpFic08n3Fd\nA+4vE9dzgAu3G+AG0IRwQ8Y2/X6ao1Z6mkV2duscJIkQfS1z30igOgEoXrArWQeI\n6gnhhBsRAgMBAAECggEABOcNRkBCeu6ei2gc5rAMglElRZ5SVOlsPacAYYp2i2Y7\njhaHMpdWMDQnGyRSpK0x1ShDPhwcmY8xnf7nlHmftmSsl81Y3AlzyArU+iFjMnca\nz5ytASL64BxIs3rn2tZYUPun9+rYRIHrWF3wnZgrSW3sMFK2uvw3Dn52NBeCkWZ+\npV+ntgJ4oNSsda6lA0KxYjKVcy6pot86XDaUnltZqpk02fYj7FcneNcfe3nLaHDy\nvx9sEU04zgKA/Tuj4dgJIAf0K3h1olo/36sZi7Cf4i3xX1astPBhKt4LUT8tnHdd\nNOabQO2yJ+kew0G09ohhMoUQG/XKGiXqkOk+p0OxoQKBgQD5SKwaNd60S8js4xKO\n/iLZ4lf1peROGriD9a9fG9yIrRCtzyi8jymuLxxcAih36TIUxVnXxCxzjzC+lCCN\noE92j7IJTtdXKGTJqyQyVxwiuh97hqiHUPxhR0+BR92AVu627708dKqK8eBWRU2c\n4BJyvZkIlcitPpoXESzfPC2IuQKBgQDd3iwZtr9cYZ63jZ4ek/ni/g7RqAlEoo0b\nUR4ju4NUtm2MGHnoizWGj5Hp+txivbKxSci8AcjDyUJAx3Zuz5U4vlkSGWO/Lz8Q\nI+Rm7dQlglnl88rBwM1Ry8L6FuPThTV37vdJ3m6wRxS3KVKWBA/mzQmyE9n3kweE\nQBzzeT1JGQKBgCpCXZqb40MhTdCKtgyznGjfbBXip49uDDWiorY23O32mMs+QSOm\nCWTT67TVUNLzH2BSDGb9hKOadKL6LYKU2KO6vG3DhdHqsRtW/e3iwoxIjSm9rDg0\nTHSZSCscabpmAlXU0nm7NWYUlvlJCl07xyTYa2b/LWPhJvIeIUM+ymFRAoGBALa5\nASz0OsmEhEi7U1vvlr+BaQb2Exv5m6jBt8bJ6bFcxP+6MLx52c1GdG908QhJHt+v\n2qgr+AJ2wB/Fph5Ay6595bFoQ6Py70cFqFe0yyFRJ2Sg0X2cofwZiiyZqWxMqupp\nXjPyAsse30qxt5hhJA97Ed8dRkgFSQ18F9vVH8oRAoGBAO3eCrQDQCwf2VuTsOh7\njp08qUsm0TaTTGsbbTPngwY4u/4oH6JGjsgyQOFBaHWJ43VivcvSVymHi5x+XpHm\n/374yqpJpprdXt1lj4m1mJIkOyphFh1Nz9YsCNhyyAbiG1tT/PKXcuqNDtf3bkBB\nPNWyhelN38VvQ3FsjHnemahI\n-----END PRIVATE KEY-----\n",
+  "client_email": "testbdaccount@testbd-393323.iam.gserviceaccount.com",
+  "client_id": "103875777231063674045",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/testbdaccount%40testbd-393323.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+};
+
 // Замени данные ниже на свои
 const SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk';
 const SHEET_NAME = 'Лист1';
@@ -19,7 +34,7 @@ function init()
 {
   console.log('Инициализация Google Sheets API...');
   gapi.client.init({
-    apiKey: 'cred.json',
+    apiKey: CREDENTIALS,
     discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
   }).then(function() {
     console.log('Google Sheets API инициализирован.');
