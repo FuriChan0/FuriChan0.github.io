@@ -5,7 +5,57 @@ tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2cab37";
 
 ////////////////////////////////////////
+/*
+SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk'
+apiKey = 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M'
+*/
+// Замени данные ниже на свои
+const SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk';
+const SHEET_NAME = 'Лист1';
+const RANGE = 'A1:B10'; // Укажи диапазон ячеек, откуда нужно получить данные
 
+// Функция для инициализации Google Sheets API
+function init()
+{
+  console.log('Инициализация Google Sheets API...');
+  gapi.client.init({
+    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
+    discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+  }).then(function() {
+    console.log('Google Sheets API инициализирован.');
+    gapi.client.load('sheets', 'v4');
+  }).then(function() {
+    getDataFromSheet();
+  }).catch(function(error) {
+    console.log('Error loading Google Sheets API:', error);
+  });
+}
+
+// Функция для получения данных из Google Таблицы
+function getDataFromSheet()
+{
+  gapi.client.sheets.spreadsheets.values.get({
+    spreadsheetId: SPREADSHEET_ID,
+    range: `${SHEET_NAME}!${RANGE}`,
+  }).then(function(response) {
+    console.log('Данные успешно получены из Google Таблицы.');
+    const data = response.result.values;
+    if (data && data.length > 0)
+    {
+      // Пример использования данных из ячейки A2 и B5:
+      const cellA2 = data[1][0]; // Так как индексация начинается с 0
+      const cellB5 = data[4][1];
+      console.log('Данные из ячейки A2:', cellA2);
+      console.log('Данные из ячейки B5:', cellB5);
+    }
+    else
+    {
+      console.log('Данные не найдены.');
+    }
+  }).catch(function(error) {
+    console.log('Error getting data from Google Sheets:', error);
+  });
+}
 ////////////////////////////////////////
 
 let numProducts = 6;
@@ -122,10 +172,6 @@ function decreaseQuantity(index)
     delete selectedItems[index];
     btn[index].textContent = "Добавить"; // Меняем текст кнопки на "Добавить"
     removeQuantityContainer(index);
-    if (selectedItems === 0)
-    {
-      tg.MainButton.hide();
-    }
   }
 }
 
