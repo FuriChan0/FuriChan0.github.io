@@ -33,9 +33,10 @@ body {
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
+    opacity: 1;
     /* width: 120px; */
     
-    transition: background .2s linear, width .2s linear, opancity .2s linear;
+    transition: background .2s linear, opacity .15s linear;
 }
 
 .btn:hover {
@@ -57,7 +58,7 @@ body {
 }
 
 .quantity > *:first-child {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 .quantity.show {
