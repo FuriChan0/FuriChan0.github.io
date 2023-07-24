@@ -17,7 +17,6 @@ function initClient() {
   }).then(function() {
     // Теперь мы можем использовать Google Sheets API
     readDataFromSheet('1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk');
-    getNumberOfRowsInSheet('1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk');
   });
 }
 
@@ -25,28 +24,11 @@ function initClient() {
 function readDataFromSheet(spreadsheetId) {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
-    range: 'Sheet1!A2:E', // Замените на нужный диапазон вашей таблицы
+    range: 'Sheet1!A2:A', // Замените на нужный диапазон вашей таблицы
   }).then(function(response) {
     var values = response.result.values;
     // Обработайте полученные данные (например, выведите их на вашей веб-странице)
     console.log(values);
-  }, function(reason) {
-    console.error('Ошибка: ' + reason.result.error.message);
-  });
-}
-
-function getNumberOfRowsInSheet(spreadsheetId) {
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId,
-    range: 'Sheet1!A2:E' // Название листа
-  }).then(function(response) {
-    var values = response.result.values;
-    if (values) {
-      var numberOfRows = values.length;
-      console.log('Количество записанных строк: ' + numberOfRows);
-    } else {
-      console.log('Таблица пуста.');
-    }
   }, function(reason) {
     console.error('Ошибка: ' + reason.result.error.message);
   });
