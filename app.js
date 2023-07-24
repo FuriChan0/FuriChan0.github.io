@@ -9,7 +9,7 @@ tg.MainButton.color = "#2cab37";
 function initClient() {
   // Загрузка учетных данных сервисного аккаунта
   gapi.client.init({
-    apiKey: null,
+    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
     clientId: '103875777231063674045', // Замените на фактический client_id из cred.json
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
   }).then(function() {
