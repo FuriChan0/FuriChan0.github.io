@@ -25,7 +25,7 @@ function initClient() {
 function readDataFromSheet(spreadsheetId) {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
-    range: 'Sheet1', // Замените на нужный диапазон вашей таблицы
+    range: 'Sheet1!A2:E', // Замените на нужный диапазон вашей таблицы
   }).then(function(response) {
     var values = response.result.values;
     // Обработайте полученные данные (например, выведите их на вашей веб-странице)
@@ -38,7 +38,7 @@ function readDataFromSheet(spreadsheetId) {
 function getNumberOfRowsInSheet(spreadsheetId) {
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,
-    range: 'Sheet1' // Название листа
+    range: 'Sheet1!A2:E' // Название листа
   }).then(function(response) {
     var values = response.result.values;
     if (values) {
