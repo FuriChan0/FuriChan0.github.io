@@ -86,7 +86,7 @@ function createButtonsWithImages(num)
 
     const priceElement = document.createElement("span");
     priceElement.className = "item-price";
-    priceElement.textContent = " · " + dataObj[`itemPrice${i}`] + " руб.";
+    priceElement.textContent = " · ₽ " + dataObj[`itemPrice${i}`];
 
     nameAndPriceContainer.appendChild(nameElement);
     nameAndPriceContainer.appendChild(priceElement);
