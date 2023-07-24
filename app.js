@@ -5,34 +5,6 @@ tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2cab37";
 
 ////////////////////////////////////////
-gapi.load('client', function() {
-  // Здесь можно вызывать функцию для чтения данных из Google Таблицы
-  initClient();
-});
-
-// Инициализация клиента и загрузка таблицы
-function initClient() {
-  gapi.client.init({
-    apiKey: 'AIzaSyAw1c6Nwin5_73R6qUr61p9U-3JPoggp5M',
-  }).then(function() {
-    // Теперь мы можем использовать Google Sheets API
-    readDataFromSheet('1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk');
-  });
-}
-
-// Функция для чтения данных из таблицы
-function readDataFromSheet(spreadsheetId) {
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: spreadsheetId,
-    range: 'Лист1!A2:A7', // Замените на нужный диапазон вашей таблицы
-  }).then(function(response) {
-    var values = response.result.values;
-    // Обработайте полученные данные (например, выведите их на вашей веб-странице)
-    console.log(values);
-  }, function(reason) {
-    console.error('Ошибка: ' + reason.result.error.message);
-  });
-}
 
 ////////////////////////////////////////
 
@@ -69,7 +41,9 @@ function createClickListener(index) {
       delete selectedItems[index];
       btn[index].textContent = "Добавить"; // Меняем текст кнопки на "Добавить"
       removeQuantityContainer(index);
-    } else {
+    }
+    else
+    {
       // btn[index].textContent = 'Отменить'; // Меняем текст кнопки на "Отменить"
       btn[index].classList.add("expanded");
       selectedItems[index] = 1;
