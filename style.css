@@ -4,7 +4,6 @@ body {
     font-size: 12px;
     color: var(--tg-theme-text-color);
     background: var(--tg-theme-bg-color);
-    /* background: rgb(28, 39, 49); */
 }
 
 .container {
@@ -38,7 +37,6 @@ body {
     font-weight: 800;
     opacity: 1;
     font-family: sans-serif;
-    /* width: 120px; */
     
     transition: background .2s linear, opacity .15s linear;
 }
@@ -97,19 +95,18 @@ body {
 
 .item-name {
     font-family: sans-serif;
-    /* color: #fff; */
     font-weight: 400;
     font-size: 1.2em;
 }
 
 .item-price {
     font-family: sans-serif;
-    /* color: #fff; */
     font-weight: 700;
     font-size: 1.2em;
 }
 
-.quantity-btn {
+.quantity-btn-minus, .quantity-btn-plus {
+    position: relative;
     display: inline-block;
     padding: 10px 20px;
     border: none;
@@ -124,11 +121,37 @@ body {
     transition: background .2s linear;
 }
 
-.quantity-btn:hover {
+.quantity-btn-plus::before,
+.quantity-btn-plus::after,
+.quantity-btn-minus::before,
+.quantity-btn-minus::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 23px; /* Размер плюса */
+  height: 6px;
+  border-radius: 10px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+/* Плюс на кнопке - вертикальная линия */
+.quantity-btn-plus::before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* Плюс на кнопке - горизонтальная линия */
+.quantity-btn-plus::after, .quantity-btn-minus::after {
+  transform: translate(-50%, -50%);
+}
+
+.quantity-btn-plus:hover {
     background: rgb(237, 150, 11);
 }
 
-.quantity-btn:first-child:hover {
+.quantity-btn-minus:hover {
     background: rgb(211, 54, 45);
 }
 

@@ -131,7 +131,7 @@ function showQuantityContainer(index)
 
   const minusButton = document.createElement("button");
   minusButton.textContent = "-";
-  minusButton.className = "quantity-btn";
+  minusButton.className = "quantity-btn-minus";
   minusButton.addEventListener("click", () => decreaseQuantity(index));
 
   const quantityText = document.createElement("span");
@@ -141,7 +141,7 @@ function showQuantityContainer(index)
 
   const plusButton = document.createElement("button");
   plusButton.textContent = "+";
-  plusButton.className = "quantity-btn";
+  plusButton.className = "quantity-btn-plus";
   plusButton.addEventListener("click", () => increaseQuantity(index));
 
   quantityContainer.appendChild(minusButton);
