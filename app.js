@@ -1,16 +1,19 @@
 let tg = window.Telegram.WebApp;
-// tg.expand();
 
-tg.MainButton.textColor = "#FFFFFF";
-tg.MainButton.color = "#2cab37";
+// tg.expand(); // Функция раскрытия окна на все пространство
 
-////////////////////////////////////////
+tg.MainButton.textColor = "#FFFFFF"; // Устанавливаем цвет текста для главной кнопки.
+tg.MainButton.color = "#2cab37"; // Устанавливаем цвет фона для главной кнопки.
+
+// Константы для получения данных из таблицы Google Sheets
 const SPREADSHEET_ID = '1AJyCKZm4EHlyvhMhtwGgK-bJPzUa2EyHA7XvMpcrOMk';
 const SHEET_NAME = 'Лист1';
 const RANGE = 'A:D';
 
+// Объект для хранения данных из Google Sheets
 const dataObj = {};
 
+// Функция инициализации
 function init()
 {
   gapi.client.init({
@@ -25,7 +28,9 @@ function init()
   });
 }
 
-function getDataFromSheet() {
+// Функция для получения данных из таблицы Google Sheets
+function getDataFromSheet()
+{
   gapi.client.sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
     range: `${SHEET_NAME}!${RANGE}`,
@@ -58,9 +63,11 @@ function getDataFromSheet() {
   });
 }
 
+// Объект для хранения выбранных товаров и кнопок
 const selectedItems = {};
 const btn = [];
 
+// Функция для создания кнопок с изображениями
 function createButtonsWithImages(num)
 {
   const buttonsContainer = document.getElementById("buttonsContainer");
@@ -103,6 +110,7 @@ function createButtonsWithImages(num)
   }
 }
 
+// Функция для создания обработчика клика по кнопке
 function createClickListener(index)
 {
   return function ()
@@ -123,6 +131,7 @@ function createClickListener(index)
   };
 }
 
+// Функция для отображения контейнера с количеством товаров
 function showQuantityContainer(index)
 {
   const itemContainer = document.getElementById("btn" + index).parentNode;
@@ -157,6 +166,7 @@ function showQuantityContainer(index)
   tg.MainButton.show();
 }
 
+// Функция для удаления контейнера с количеством товаров
 function removeQuantityContainer(index)
 {
   const itemContainer = document.getElementById("btn" + index).parentNode;
@@ -171,12 +181,14 @@ function removeQuantityContainer(index)
   btn[index].classList.remove("expanded");
 }
 
+// Функция для увеличения количества товаров
 function increaseQuantity(index)
 {
   selectedItems[index]++;
   updateQuantityText(index);
 }
 
+// Функция для уменьшения количества товаров
 function decreaseQuantity(index)
 {
   if (selectedItems[index] > 1)
@@ -192,12 +204,14 @@ function decreaseQuantity(index)
   }
 }
 
+// Функция для обновления текста с количеством товаров
 function updateQuantityText(index)
 {
   const quantityText = document.getElementById("quantity-text-" + index);
   quantityText.textContent = /*'Выбрано: ' +*/ selectedItems[index];
 }
 
+// Обработчик события клика по главной кнопке
 Telegram.WebApp.onEvent("mainButtonClicked", function ()
 {
   let selectedItemsString = "";
@@ -212,7 +226,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function ()
     tg.MainButton.hide();
   }
 
-  // alert(selectedItemsString)
+  // alert(selectedItemsString) // Вывод на экран информации, которая отправляется в ТГ
 
   tg.sendData(selectedItemsString);
 });
