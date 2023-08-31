@@ -181,18 +181,21 @@ body {
 
 .modal {
     display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .modal-active {
     position: absolute;
     display: block;
     top: 0px;
-    left: 7.5%;
+    left: 8%;
     z-index: 10;
-    width: 85%;
-    height: 100%;
-    background: rgb(110, 110, 110);
+    width: 90%;
+    height: auto;
+    background: rgb(138, 138, 138);
     border-radius: 20px;
+    opacity: 1;
 }
 
 .modal-name-text {
@@ -205,7 +208,65 @@ body {
 .modal-description-text {
     color: #fff;
     font-family: sans-serif;
-    font-size: 1.1em
+    font-size: 1.1em;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+}
+
+.modal-cancel-button {
+    position: absolute;
+    display: block;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+    border-radius: 20px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    background: rgb(214, 98, 92);
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 1.3em;
+
+    transition: background .2s linear;
+}
+
+.modal-cancel-button:hover {
+    background: rgb(177, 86, 81);
+}
+
+.modal-images-button {
+    border-radius: 10px;
+    border: none;
+    width: 80px;
+    height: 35px;
+    margin-right: 10px; 
+    color: #fff;
+    background: rgb(178, 178, 178);
+    font-family: sans-serif;
+    font-weight: 900;
+    font-size: 1.3em;
+    display: inline-block;
+    margin-top: 10px;
+    
+    transition: background .2s linear;
+}
+
+.modal-images-button:hover {
+    background: rgb(148, 148, 148);
+}
+
+.modal-images {
+    display: block;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    border-radius: 20px;
+
+    transition: opacity 0.5s ease;
 }
 
 /* Переменые цветов с темы ТГ

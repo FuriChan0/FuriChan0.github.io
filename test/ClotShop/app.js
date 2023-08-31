@@ -8,7 +8,7 @@ tg.MainButton.color = "#2cab37"; // Устанавливаем цвет фона
 // Константы для получения данных из таблицы Google Sheets
 const SPREADSHEET_ID = '18fi5tz4n0ES-6Grbttv6PyCKXU5QuoSiU0EjBqC_o3A';
 const SHEET_NAME = 'Лист1';
-const RANGE = 'A:M';
+const RANGE = 'A:P';
 
 // Объект для хранения данных из Google Sheets
 const dataObj = {};
@@ -29,6 +29,7 @@ function init()
 }
 
 const modal = document.getElementById("modal");
+const modalImage = document.getElementById("modal-images");
 
 document.addEventListener("click", handlerOutWard);
 modal.addEventListener("click", modalActive);
@@ -37,6 +38,7 @@ function handlerOutWard() {
   while (modal.firstChild) {
     modal.removeChild(modal.firstChild);
   }
+  modal.style.opacity = "0";
   modal.classList.remove("modal-active");
 }
 
@@ -72,6 +74,9 @@ function getDataFromSheet()
         const itemAvialXXXL = row[10];
         const itemComposition = row[11];
         const itemDescription = row[12];
+        const itemDescriptionImage1 = row[13];
+        const itemDescriptionImage2 = row[14];
+        const itemDescriptionImage3 = row[15];
 
         dataObj[`imageUrl${i}`] = imageUrl;
         dataObj[`itemName${i}`] = itemName;
@@ -87,6 +92,9 @@ function getDataFromSheet()
         dataObj[`itemAvialXXXL${i}`] = itemAvialXXXL;
         dataObj[`itemComposition${i}`] = itemComposition;
         dataObj[`itemDescription${i}`] = itemDescription;
+        dataObj[`itemDescriptionImage1${i}`] = itemDescriptionImage1;
+        dataObj[`itemDescriptionImage2${i}`] = itemDescriptionImage2;
+        dataObj[`itemDescriptionImage3${i}`] = itemDescriptionImage3;
       }
 
       createButtonsWithImages(num);
@@ -147,6 +155,7 @@ function createButtonsWithImages(num)
     item[i].addEventListener("click", (e) => createClickItem(e, i));
     btn[i] = button;
     btn[i].addEventListener("click", (e) => createClickListener(e, i));
+    btn[i].addEventListener("click", handlerOutWard);
   }
 }
 
@@ -169,30 +178,88 @@ function createClickListener(event, index)
   }
 }
 
+// Функция для создания обработчика клика по изображению
+let currentImageIndex = 1;
 function createClickItem(event, index)
 {
   event.stopPropagation(event);
 
-  modal.classList.add("modal-active");
+  if (modal.classList.contains("modal-active") == false)
+  {
+    modal.style.opacity = "0";
+    modal.style.display = "block";
 
-  const modalName = document.createElement("p");
-  modalName.className = "modal-name-text";
-  modalName.textContent = dataObj[`itemName${index}`];
-  modal.appendChild(modalName);
+    modal.classList.add("modal-active");
 
-  const modalDescription = document.createElement("p");
-  modalDescription.className = "modal-description-text";
-  modalDescription.innerHTML = "<b>Описание:</b><br>"
-  + dataObj[`itemDescription${index}`] + "<br><br><b>Состав:</b><br>"
-  + dataObj[`itemComposition${index}`] + "<br><br><b>Наличие:</b>"
-  + "<br> - XS: " + dataObj[`itemAvialXS${index}`]
-  + "<br> - S: " + dataObj[`itemAvialS${index}`]
-  + "<br> - M: " + dataObj[`itemAvialM${index}`]
-  + "<br> - L: " + dataObj[`itemAvialL${index}`]
-  + "<br> - XL: " + dataObj[`itemAvialXL${index}`]
-  + "<br> - XXL: " + dataObj[`itemAvialXXL${index}`]
-  + "<br> - XXXL: " + dataObj[`itemAvialXXXL${index}`];
-  modal.appendChild(modalDescription);
+    const modalTop = document.querySelector(".modal-active");
+    const newTopValueTmp = Math.floor((index - 1) / 2);
+    const newTopValue = String(newTopValueTmp * 200) + "px"; 
+    modalTop.style.top = newTopValue;
+
+    const modalCancel = document.createElement("button");
+    modalCancel.className = "modal-cancel-button";
+    modalCancel.textContent = "X";
+    modalCancel.addEventListener("click", handlerOutWard);
+    modal.appendChild(modalCancel);
+
+    const modalName = document.createElement("p");
+    modalName.className = "modal-name-text";
+    modalName.textContent = dataObj[`itemName${index}`];
+    modal.appendChild(modalName);
+    
+    const modalImages = document.createElement("img");
+    modalImages.className = "modal-images";
+    modalImages.src = dataObj[`itemDescriptionImage1${index}`];
+    modalImages.alt = "Ошибка!";
+    modal.appendChild(modalImages);
+    const modalImagesPrev = document.createElement("button");
+    modalImagesPrev.className = "modal-images-button";
+    modalImagesPrev.textContent = "<";
+    modalImagesPrev.addEventListener("click", () => changeImage(index, modalImages, -1));
+    const modalImagesNext = document.createElement("button");
+    modalImagesNext.className = "modal-images-button";
+    modalImagesNext.textContent = ">";
+    modalImagesNext.addEventListener("click", () => changeImage(index, modalImages, 1));
+    modal.appendChild(modalImagesPrev);
+    modal.appendChild(modalImagesNext);
+
+    const modalDescription = document.createElement("p");
+    modalDescription.className = "modal-description-text";
+    modalDescription.innerHTML = "<b>Описание:</b><br>"
+    + dataObj[`itemDescription${index}`] + "<br><br><b>Состав:</b><br>"
+    + dataObj[`itemComposition${index}`] + "<br><br><b>Наличие:</b>"
+    + "<br> - XS: " + dataObj[`itemAvialXS${index}`]
+    + "<br> - S: " + dataObj[`itemAvialS${index}`]
+    + "<br> - M: " + dataObj[`itemAvialM${index}`]
+    + "<br> - L: " + dataObj[`itemAvialL${index}`]
+    + "<br> - XL: " + dataObj[`itemAvialXL${index}`]
+    + "<br> - XXL: " + dataObj[`itemAvialXXL${index}`]
+    + "<br> - XXXL: " + dataObj[`itemAvialXXXL${index}`];
+    modal.appendChild(modalDescription);
+
+    setTimeout(function () {
+      modal.style.opacity = "1";
+    }, 0);
+  }
+}
+
+// Функция для изменения изображения
+function changeImage(index, imgElement, increment) {
+  currentImageIndex += increment;
+  if (currentImageIndex < 1) {
+    currentImageIndex = 3; // Если индекс стал меньше 1, переходим к последнему изображению
+  }
+  if (currentImageIndex > 3) {
+    currentImageIndex = 1; // Если индекс стал больше 3, переходим к первому изображению
+  }
+  imgElement.style.opacity = 0;
+  setTimeout(function () {
+    imgElement.src = dataObj[`itemDescriptionImage${currentImageIndex}${index}`];
+    imgElement.alt = dataObj[`itemDescriptionImage1${index}`];
+    setTimeout(function () {
+      imgElement.style.opacity = 1;
+    }, 10);
+  }, 500);
 }
 
 // Функция для отображения контейнера с количеством товаров
