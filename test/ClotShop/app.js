@@ -8,7 +8,7 @@ tg.MainButton.color = "#66836a"; // Устанавливаем цвет фона
 // Константы для получения данных из таблицы Google Sheets
 const SPREADSHEET_ID = '18fi5tz4n0ES-6Grbttv6PyCKXU5QuoSiU0EjBqC_o3A';
 const SHEET_NAME = 'Лист1';
-const RANGE = 'A:P';
+const RANGE = 'A:Q';
 
 // Объект для хранения данных из Google Sheets
 const dataObj = {};
