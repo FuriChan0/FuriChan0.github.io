@@ -3,7 +3,7 @@ let tg = window.Telegram.WebApp;
 tg.expand(); // Функция раскрытия окна на все пространство
 
 tg.MainButton.textColor = "#FFFFFF"; // Устанавливаем цвет текста для главной кнопки.
-tg.MainButton.color = "#2cab37"; // Устанавливаем цвет фона для главной кнопки.
+tg.MainButton.color = "#66836a"; // Устанавливаем цвет фона для главной кнопки.
 
 // Константы для получения данных из таблицы Google Sheets
 const SPREADSHEET_ID = '18fi5tz4n0ES-6Grbttv6PyCKXU5QuoSiU0EjBqC_o3A';
@@ -73,10 +73,11 @@ function getDataFromSheet()
         const itemAvialXXL = row[9];
         const itemAvialXXXL = row[10];
         const itemComposition = row[11];
-        const itemDescription = row[12];
-        const itemDescriptionImage1 = row[13];
-        const itemDescriptionImage2 = row[14];
-        const itemDescriptionImage3 = row[15];
+        const itemShortDescription = row[12];
+        const itemDescription = row[13];
+        const itemDescriptionImage1 = row[14];
+        const itemDescriptionImage2 = row[15];
+        const itemDescriptionImage3 = row[16];
 
         dataObj[`imageUrl${i}`] = imageUrl;
         dataObj[`itemName${i}`] = itemName;
@@ -91,6 +92,7 @@ function getDataFromSheet()
         dataObj[`itemAvialXXL${i}`] = itemAvialXXL;
         dataObj[`itemAvialXXXL${i}`] = itemAvialXXXL;
         dataObj[`itemComposition${i}`] = itemComposition;
+        dataObj[`itemShortDescription${i}`] = itemShortDescription;
         dataObj[`itemDescription${i}`] = itemDescription;
         dataObj[`itemDescriptionImage1${i}`] = itemDescriptionImage1;
         dataObj[`itemDescriptionImage2${i}`] = itemDescriptionImage2;
@@ -202,16 +204,12 @@ function createClickItem(event, index)
     modalCancel.addEventListener("click", handlerOutWard);
     modal.appendChild(modalCancel);
 
-    const modalName = document.createElement("p");
-    modalName.className = "modal-name-text";
-    modalName.textContent = dataObj[`itemName${index}`];
-    modal.appendChild(modalName);
-    
     const modalImages = document.createElement("img");
     modalImages.className = "modal-images";
     modalImages.src = dataObj[`itemDescriptionImage1${index}`];
     modalImages.alt = "Ошибка!";
     modal.appendChild(modalImages);
+
     const modalImagesPrev = document.createElement("button");
     modalImagesPrev.className = "modal-images-button";
     modalImagesPrev.textContent = "<";
@@ -223,12 +221,22 @@ function createClickItem(event, index)
     modal.appendChild(modalImagesPrev);
     modal.appendChild(modalImagesNext);
 
+    const modalName = document.createElement("p");
+    modalName.className = "modal-name-text";
+    modalName.textContent = dataObj[`itemName${index}`];
+    modal.appendChild(modalName);
+
+    const modalShortDescription = document.createElement("p");
+    modalShortDescription.className = "modal-description-text";
+    modalShortDescription.innerHTML = dataObj[`itemShortDescription${index}`] + "<br>";
+    modal.appendChild(modalShortDescription);
+
     const modalDescription = document.createElement("p");
     modalDescription.className = "modal-description-text";
-    modalDescription.innerHTML = "<b>Описание:</b><br>"
-    + dataObj[`itemDescription${index}`] + "<br><br><b>Состав:</b><br>"
-    + dataObj[`itemComposition${index}`] + "<br><br><b>Наличие:</b>"
-    + "<br> - XS: " + dataObj[`itemAvialXS${index}`]
+    modalDescription.innerHTML = "<hr><b><h3>Описание:</h3></b>"
+    + dataObj[`itemDescription${index}`] + "<br><b>Состав: </b>"
+    + dataObj[`itemComposition${index}`] + "<br><br><hr><b><h3>Наличие:</h3></b>"
+    + " - XS: " + dataObj[`itemAvialXS${index}`]
     + "<br> - S: " + dataObj[`itemAvialS${index}`]
     + "<br> - M: " + dataObj[`itemAvialM${index}`]
     + "<br> - L: " + dataObj[`itemAvialL${index}`]

@@ -202,7 +202,10 @@ body {
     color: #fff;
     font-family: sans-serif;
     font-weight: 900;
-    font-size: 1.2em;
+    font-size: 1.6em;
+    text-align: left;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .modal-description-text {
@@ -265,8 +268,16 @@ body {
     height: 250px;
     object-fit: contain;
     border-radius: 20px;
+    margin-top: 20px;
 
     transition: opacity 0.5s ease;
+}
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: rgb(178, 178, 178); /* Цвет линии */
+    color: rgb(178, 178, 178); /* Цвет линии для IE6-7 */
+    height: 2px; /* Толщина линии */
 }
 
 /* Переменые цветов с темы ТГ
