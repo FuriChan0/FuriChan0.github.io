@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты - FuriProject</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo"><img src="https://avatars.githubusercontent.com/u/92718389" alt="FuriProject" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        
+        <h1>Мои проекты</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="other.html">Разное</a></li>
+                <li><a href="about.html">Обо мне</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h2>Проекты на GitHub</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Список всех доступных проектов на GitHub</h3>
+                    <a href="https://github.com/FuriChan0?tab=repositories" class="project-link">Посмотреть на GitHub</a>
+                </div>
+            </div>
+            
+            <h2>Мои боты</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>MangaRat</h3>
+                    <p>Асинхронный телеграмм бот для чтения манги.</p>
+                    <p>Использует технологию пагинации паршеных страниц, хранимых в буфере обмена на базе библиотек Aiogram 3, BeautifulSoup, Requests, SQLite3</p>
+                    <a href="https://t.me/mangarat_bot" class="project-link">Открыть бота</a>
+                </div>
+            </div>
+            
+            <h2>Веб</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Итоговый проект по верстке</h3>
+                    <p>Итоговая верстка страницы по курсу "Основы веб-верстки с HTML и CSS" на stepik.</p>
+                    <a href="https://furichan0.github.io/DevCloud-Solutions/" class="project-link">Посмотреть проект</a>
+                    <a href="https://stepik.org/course/129827/" class="project-link">Посмотреть курс</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="year" id="yearElement">2020-<span id="currentYear"></span></div>
+    </div>
+    
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <script src="assets/js/common.js"></script>
+</body>
+</html>
