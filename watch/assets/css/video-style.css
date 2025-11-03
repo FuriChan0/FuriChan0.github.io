@@ -1,0 +1,185 @@
+.anime-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.anime-cover {
+    width: 300px;
+    height: 425px;
+    margin: 0 auto 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px var(--card-shadow);
+}
+
+.anime-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.anime-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.anime-description {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    line-height: 1.6;
+}
+
+/* Стили для выбора озвучки */
+.voice-selector-container {
+    margin-bottom: 2rem;
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.voice-buttons {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.voice-btn {
+    padding: 0.8rem 1.2rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.voice-btn:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+.voice-btn.active {
+    background-color: var(--hover-color);
+    color: var(--bg-color);
+}
+
+.episodes-section {
+    margin-bottom: 2rem;
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+}
+
+.episode-btn {
+    padding: 0.8rem 0.5rem;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.episode-btn:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+.episode-btn.active {
+    background-color: var(--hover-color);
+    color: var(--bg-color);
+}
+
+.player-container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    margin-bottom: 2rem;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    margin-bottom: 1rem;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+}
+
+.episode-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.episode-description {
+    color: var(--accent-color);
+    line-height: 1.5;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.back-link:hover {
+    color: var(--hover-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .anime-container {
+        padding: 1rem;
+    }
+    
+    .anime-cover {
+        width: 250px;
+        height: 354px;
+    }
+    
+    .anime-title {
+        font-size: 2rem;
+    }
+    
+    .episodes-grid {
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    }
+    
+    .voice-buttons {
+        justify-content: center;
+    }
+    
+    .voice-btn {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+}

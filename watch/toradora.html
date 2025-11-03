@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toradora! - FuriProject</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/video-style.css">
+</head>
+<body>
+    <div class="anime-container">
+
+        <div class="anime-cover" id="animeCover"></div>
+        <h1 class="anime-title" id="animeTitle"></h1>
+        <div class="anime-description" id="animeDescription"></div>
+
+        <div class="voice-selector-container" id="voiceSelectorContainer" style="display: none;">
+            <h3>Выбор озвучки</h3>
+            <div class="voice-buttons" id="voiceButtons"></div>
+        </div>
+
+        <div class="episodes-section">
+            <h2>Список серий</h2>
+            <div class="episodes-grid" id="episodesGrid"></div>
+        </div>
+
+        <div class="player-container">
+            <div class="video-wrapper">
+                <div id="videoPlayer"></div>
+            </div>
+            <h3 class="episode-title" id="episodeTitle">Выберите серию</h3>
+            <p class="episode-description" id="episodeDescription">Нажмите на номер серии выше для просмотра</p>
+        </div>
+
+        <center>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Вернуться</a></li>
+                </ul>
+            </nav>
+        </center>
+    </div>
+
+    <div class="year" id="yearElement">2020-<span id="currentYear"></span></div>
+
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+
+    <script type="application/json" id="animeData">
+    {
+        "title": "Toradora!",
+        "cover": "https://store.otaku.ru/static/i/toradora_posterbig.jpg",
+        "description": "Главный герой, Рюдзи Такасу, хоть и выглядит как опасный хулиган, на самом деле является добрым и заботливым парнем. Его одноклассница Тайга Айсака, несмотря на милую внешность, обладает взрывным характером. Случайно узнав секреты друг друга, они заключают соглашение о взаимопомощи в любовных делах.",
+        "voices": {
+            "Reanimedia": {
+                "name": "Reanimedia",
+                "episodes": [
+                    {
+                        "number": 1,
+                        "title": "Тигр и Дракон",
+                        "description": "Рюдзи Такасу и Тайга Айсака случайно узнают секреты друг друга и заключают соглашение о взаимопомощи в любовных делах.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/08ba39a92a98b2b37e12f834994db6f2/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 2,
+                        "title": "Рюдзи и Тайга",
+                        "description": "Тайга переезжает в квартиру Рюдзи, чтобы быть ближе к Юсаку Китамуре, в которого влюблена.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/5313c986d2ec6ccd490111e21a48ff05/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 3,
+                        "title": "Твоя песня",
+                        "description": "Тайга просит Рюдзи помочь ей написать песню для Юсаки, но сталкивается с неожиданными трудностями.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/98302a8829e01b1b7caccbf01b9265a0/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 4,
+                        "title": "Выражение лица в тот момент",
+                        "description": "Рюдзи замечает изменения в поведении Тайги и пытается понять, что она на самом деле чувствует.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/744c84de1253a6c67b1a90e22b6ba5ce/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 5,
+                        "title": "Ами Кавасима",
+                        "description": "В класс переходит новая ученица - Ами Кавасима, которая знакома с Юсаки и привносит новые конфликты.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/5637d3ff6558f5ac804b0a0bad479dfd/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 6,
+                        "title": "Истинная сущность",
+                        "description": "Герои сталкиваются с необходимостью показать свои настоящие чувства и характер.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/0e971db885d8fde36ea5f9fbb6a27f77/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 7,
+                        "title": "Открытие бассейна",
+                        "description": "Школа открывает бассейн, что приводит к неожиданным ситуациям для главных героев.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/64be64b68c2ab51f1d60896512750212/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 8,
+                        "title": "Ради кого?",
+                        "description": "Герои задаются вопросом, ради кого они на самом деле совершают свои поступки.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/feebd09e89dbb6265ced625fa1583298/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 9,
+                        "title": "Поехали к океану, говоришь ты",
+                        "description": "Планы поездки к океану обнажают скрытые чувства и конфликты между героями.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/fcc44193f56ba15d6ceb2fdff91f7cdd/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 10,
+                        "title": "Фейерверк",
+                        "description": "Фейерверк становится фоном для важных разговоров и признаний между персонажами.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/e1e14884ad2aec5a976adc40bd1a2370/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 11,
+                        "title": "Культурный фестиваль школы Охаси — Предисловие",
+                        "description": "Подготовка к культурному фестивалю начинается, принося с собой новые вызовы.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/c269d71f3a46b88d1e296cec476c5d28/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 12,
+                        "title": "Культурный фестиваль школы Охаси — Вторая часть",
+                        "description": "Культурный фестиваль в разгаре, и отношения между героями становятся все более сложными.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/54e7fe1ada16980bc9245857ae609993/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 13,
+                        "title": "Культурный фестиваль школы Охаси — Послесловие",
+                        "description": "Культурный фестиваль завершается, оставляя после себя важные осознания.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/eb497af3e810259c0992b81020c73ca7/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 14,
+                        "title": "Карманный Тигр счастья",
+                        "description": "Тайга пытается найти свое место и понять, что же на самом деле делает ее счастливой.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/69a166ad50be5ad7efb0042de9aa953b/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 15,
+                        "title": "Звёзды, далеко",
+                        "description": "Герои задумываются о своем будущем и о том, насколько достижимы их мечты.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/50cbde8b425aaca62c7143c37fdaa7a6/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 16,
+                        "title": "Твой шаг вперёд",
+                        "description": "Персонажи делают важные шаги в развитии своих отношений и личностном росте.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/0c31c3296cbb0b4c8d731f3fffa05b7b/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 17,
+                        "title": "Меркурий отступает в Рождество",
+                        "description": "Рождественские праздники приносят неожиданные повороты в отношениях героев.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/06789b635a236255a4f10ab0018e63fa/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 18,
+                        "title": "Под ёлкой",
+                        "description": "Рождественская атмосфера заставляет героев задуматься о настоящих ценностях.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/b4e735f72d355ad0fcb843e626295f87/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 19,
+                        "title": "Праздник в канун Рождества",
+                        "description": "Рождественский вечер становится временем важных признаний и решений.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/c7ff138e74638a91a85e1fd0836318d1/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 20,
+                        "title": "Всегда будет так",
+                        "description": "Герои мечтают о том, чтобы текущие моменты счастья длились вечно.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/649eb9df467f0de41d46ff75aaa86da2/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 21,
+                        "title": "Несмотря ни на что",
+                        "description": "Персонажи сталкиваются с трудностями, но продолжают бороться за свои чувства.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/59ed4030889cf59a1411025303688da3/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 22,
+                        "title": "Сцена с тобой",
+                        "description": "Герои осознают ценность моментов, проведенных вместе.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/ac8e1d9ec28c4d51de006f1fc66a2ce9/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 23,
+                        "title": "Путь, который нужно пройти",
+                        "description": "Каждый из героев определяет свой дальнейший жизненный путь.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/088cea3b44fdfb5a075b0775b0f81755/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 24,
+                        "title": "Признание",
+                        "description": "Наступает время для окончательных признаний и ясности в отношениях.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/6428faadca0874b21affef9379a1143e/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 25,
+                        "title": "Торадора!",
+                        "description": "Финальная серия, где все сюжетные линии находят свое завершение.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/443e2b7ec126abe8878492426ce557c6/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": "OVA",
+                        "title": "Секрет бэнто",
+                        "description": "Дополнительная история, где Рюдзи пытается раскрыть секрет идеального бэнто, а Тайга помогает ему в этом.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/edc1586357fec547e27ae534b9da266a/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    }
+                ]
+            },
+            "DEEP": {
+                "name": "DEEP",
+                "episodes": [
+                    {
+                        "number": 1,
+                        "title": "Тигр и Дракон",
+                        "description": "Рюдзи Такасу и Тайга Айсака случайно узнают секреты друг друга и заключают соглашение о взаимопомощи в любовных делах.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/2a9b5f9853e90d68b7e4bdd12b81d807/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 2,
+                        "title": "Рюдзи и Тайга",
+                        "description": "Тайга переезжает в квартиру Рюдзи, чтобы быть ближе к Юсаку Китамуре, в которого влюблена.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/5761e678ce1e2c2445aa077a56af4561/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 3,
+                        "title": "Твоя песня",
+                        "description": "Тайга просит Рюдзи помочь ей написать песню для Юсаки, но сталкивается с неожиданными трудностями.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/e4d8d8209aeba498212b2f9d005b4e9f/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 4,
+                        "title": "Выражение лица в тот момент",
+                        "description": "Рюдзи замечает изменения в поведении Тайги и пытается понять, что она на самом деле чувствует.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/aeadb4e10ed8dee220a5797845b86a64/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 5,
+                        "title": "Ами Кавасима",
+                        "description": "В класс переходит новая ученица - Ами Кавасима, которая знакома с Юсаки и привносит новые конфликты.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/82dbd68c92cd7a56398127eda7c248a5/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 6,
+                        "title": "Истинная сущность",
+                        "description": "Герои сталкиваются с необходимостью показать свои настоящие чувства и характер.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/ea52f900cc0f8b78c47456b471328b3b/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 7,
+                        "title": "Открытие бассейна",
+                        "description": "Школа открывает бассейн, что приводит к неожиданным ситуациям для главных героев.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/374bfbf4305ae66f2be437477ef60d3a/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 8,
+                        "title": "Ради кого?",
+                        "description": "Герои задаются вопросом, ради кого они на самом деле совершают свои поступки.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/5b55943b84bd9fdcd7698b4c2444ee00/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 9,
+                        "title": "Поехали к океану, говоришь ты",
+                        "description": "Планы поездки к океану обнажают скрытые чувства и конфликты между героями.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/629bfeb69fb7a88201b0afb35232cc00/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 10,
+                        "title": "Фейерверк",
+                        "description": "Фейерверк становится фоном для важных разговоров и признаний между персонажами.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/8fda890520c4f21c19e8b4c3711bbf50/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 11,
+                        "title": "Культурный фестиваль школы Охаси — Предисловие",
+                        "description": "Подготовка к культурному фестивалю начинается, принося с собой новые вызовы.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/9c90f38d66b87fe05201e52f686f0727/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 12,
+                        "title": "Культурный фестиваль школы Охаси — Вторая часть",
+                        "description": "Культурный фестиваль в разгаре, и отношения между героями становятся все более сложными.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/25fdd508995ddb3ac70d94d56b78a2ff/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 13,
+                        "title": "Культурный фестиваль школы Охаси — Послесловие",
+                        "description": "Культурный фестиваль завершается, оставляя после себя важные осознания.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/8ac4485f909dcfeef5cc6f9214219c63/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 14,
+                        "title": "Карманный Тигр счастья",
+                        "description": "Тайга пытается найти свое место и понять, что же на самом деле делает ее счастливой.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/863ae2bd874328771d59e84173550440/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 15,
+                        "title": "Звёзды, далеко",
+                        "description": "Герои задумываются о своем будущем и о том, насколько достижимы их мечты.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/b8adac85dab1e7b4d0b6d029b4423703/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 16,
+                        "title": "Твой шаг вперёд",
+                        "description": "Персонажи делают важные шаги в развитии своих отношений и личностном росте.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/b2d890bb123b0cdd75b6631f6001cc55/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 17,
+                        "title": "Меркурий отступает в Рождество",
+                        "description": "Рождественские праздники приносят неожиданные повороты в отношениях героев.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/3d6b6799098016da1cc8c73ade369446/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 18,
+                        "title": "Под ёлкой",
+                        "description": "Рождественская атмосфера заставляет героев задуматься о настоящих ценностях.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/4e877f21afaf8188735e262353c93063/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 19,
+                        "title": "Праздник в канун Рождества",
+                        "description": "Рождественский вечер становится временем важных признаний и решений.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/4251c4ec0c56a5c5eeeb96a144e7bf4a/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 20,
+                        "title": "Всегда будет так",
+                        "description": "Герои мечтают о том, чтобы текущие моменты счастья длились вечно.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/3c781a2e898473933dcce5b6fb6d088b/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 21,
+                        "title": "Несмотря ни на что",
+                        "description": "Персонажи сталкиваются с трудностями, но продолжают бороться за свои чувства.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/61d1939f30dfe62484bc1dbeea9f62c3/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 22,
+                        "title": "Сцена с тобой",
+                        "description": "Герои осознают ценность моментов, проведенных вместе.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/b79c6b98132567c7ff98575528f19784/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 23,
+                        "title": "Путь, который нужно пройти",
+                        "description": "Каждый из героев определяет свой дальнейший жизненный путь.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/551136a3913aa80b7b313689077b0f05/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 24,
+                        "title": "Признание",
+                        "description": "Наступает время для окончательных признаний и ясности в отношениях.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/b568bf59ff93c96fd3a9e3865927e429/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": 25,
+                        "title": "Торадора!",
+                        "description": "Финальная серия, где все сюжетные линии находят свое завершение.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/0d653f2b648c834e13e82d43cad335b8/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    },
+                    {
+                        "number": "OVA",
+                        "title": "Секрет бэнто",
+                        "description": "Дополнительная история, где Рюдзи пытается раскрыть секрет идеального бэнто, а Тайга помогает ему в этом.",
+                        "video": "<iframe width='720' height='405' src='https://rutube.ru/play/embed/4ae40dd5af31721da6439543d0807b4a/' frameborder='0' allow='clipboard-write; autoplay' allowfullscreen></iframe>"
+                    }
+                ]
+            }
+        }
+    }
+    </script>
+
+    <script src="../assets/js/common.js"></script>
+    <script src="assets/js/video-player.js"></script>
+</body>
+</html>
